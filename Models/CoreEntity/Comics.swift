@@ -72,6 +72,12 @@ public struct CommicsModel: Codable {
 }
 
 
-public struct TextObject: Model {
+public struct TextObject: Codable {
+    public var type: String?
+    public var url: String?
     
+    public init(type: String?, url: String) {
+        self.type = type
+        self.url = url
+    }
 }
