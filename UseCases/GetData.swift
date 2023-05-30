@@ -8,7 +8,7 @@
 import Foundation
 
 
-public protocol GetData: Codable, Equatable  {
+public protocol GetData: Codable, Equatable, Model  {
     var apikey: String { get set }
     var hash: String { get set }
     var ts: Date { get set }

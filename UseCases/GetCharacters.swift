@@ -9,7 +9,7 @@ import Foundation
 
 public protocol GetCharacters {
     typealias Result = Swift.Result<CharactersModel, DomainErrors>
-    func getCharactersModel(_:GetCharactersModel, completion: @escaping(Result) -> Void)
+    func getCharactersModel(_ charactersModel:GetCharactersModel, completion: @escaping(Result) -> Void)
 }
 
 public struct GetCharactersModel: GetData {
