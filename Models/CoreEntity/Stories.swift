@@ -8,6 +8,23 @@
 import Foundation
 
 public struct StoriesModel: Model {
+    
+    private enum CodingKeys: String, CodingKey {
+        case id
+        case title
+        case description
+        case resourceURI
+        case type
+        case modified
+        case thumbnail
+        case comics
+        case series
+        case events
+        case characters
+        case creators
+        case originalIssue
+    }
+    
     public var id: Int?
     public var title: String?
     public var description: String?
@@ -36,5 +53,26 @@ public struct StoriesModel: Model {
         self.characters = characters
         self.creators = creators
         self.originalIssue = originalIssue
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        do {
+            self.id = try container.decodeIfPresent(Int.self, forKey: .id)
+            self.title = try container.decodeIfPresent(String.self, forKey: .title)
+            self.description = try container.decodeIfPresent(String.self, forKey: .description)
+            self.resourceURI = try container.decodeIfPresent(String.self, forKey: .resourceURI)
+            self.type = try container.decodeIfPresent(String.self, forKey: .type)
+            self.modified = try container.decodeIfPresent(Date.self, forKey: .modified)
+            self.thumbnail = try container.decodeIfPresent(MarvelImage.self, forKey: .thumbnail)
+            self.comics = try container.decodeIfPresent([CommicsModel].self, forKey: .comics)
+            self.series = try container.decodeIfPresent([SeriesModel].self, forKey: .series)
+            self.events = try container.decodeIfPresent([EventsModel].self, forKey: .events)
+            self.characters = try container.decodeIfPresent([CharactersModel].self, forKey: .characters)
+            self.creators = try container.decodeIfPresent([CreatorsModel].self, forKey: .creators)
+            self.originalIssue = try container.decodeIfPresent(CommicsModel.self, forKey: .originalIssue)
+        } catch {
+            print("error:\(error.localizedDescription)")
+        }
     }
 }

@@ -7,7 +7,18 @@
 
 import Foundation
 
-public struct WrappersModel: Codable {
+public struct WrappersModel: Model {
+    
+    private enum CodingKeys: String, CodingKey {
+        case code
+        case status
+        case data
+        case etag
+        case copyright
+        case attributionText
+        case attributionHTML
+    }
+    
     public var code: Int?
     public var status: String?
     public var data: ContainerModel?
@@ -24,5 +35,20 @@ public struct WrappersModel: Codable {
         self.copyright = copyright
         self.attributionText = attributionText
         self.attributionHTML = attributionHTML
+    }
+    
+    public init(from decoder: Decoder) throws {
+        let container = try decoder.container(keyedBy: CodingKeys.self)
+        do {
+            self.code = try container.decodeIfPresent(Int.self, forKey: .code)
+            self.status = try container.decodeIfPresent(String.self, forKey: .status)
+            self.data = try container.decodeIfPresent(ContainerModel.self, forKey: .data)
+            self.etag = try container.decodeIfPresent(String.self, forKey: .etag)
+            self.copyright = try container.decodeIfPresent(String.self, forKey: .copyright)
+            self.attributionText = try container.decodeIfPresent(String.self, forKey: .attributionText)
+            self.attributionHTML = try container.decodeIfPresent(String.self, forKey: .attributionHTML)
+        } catch {
+            print("error:\(error.localizedDescription)")
+        }
     }
 }

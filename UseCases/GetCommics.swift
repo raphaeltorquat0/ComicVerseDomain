@@ -16,6 +16,12 @@ public struct GetCommicsModel: GetData {
     public var hash: String
     public var ts: Date
     public var apikey: String
+    
+    init(hash: String, ts: Date, apikey: String) {
+        self.hash = hash
+        self.ts = ts
+        self.apikey = apikey
+    }
 }
 
 
