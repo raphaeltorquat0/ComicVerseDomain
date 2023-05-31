@@ -64,7 +64,7 @@ public struct CommicsModel: Model {
     public var collections: Array<CommicsModel>?
     public var collectedIssues: Array<CommicsModel>?
     public var dates: Array<Date>?
-    public var prices: Array<Any>?
+    public var prices: [Bool]?
     public var thumbnail: MarvelImage?
     public var images: Array<MarvelImage>?
     public var creators: Array<CreatorsModel>?
@@ -72,7 +72,7 @@ public struct CommicsModel: Model {
     public var stories: Array<StoriesModel>?
     public var events: Array<EventsModel>?
     
-    public init(id: Int?, digitalId: Int?, title: String?, issueNumber: Int?, variantDescription: String?, description: String?, modified: Date?, isbn: String?, diamondCode: String?, ean: String?, issn: String?, format: String?, pageCount: Int?, textObjects: Array<TextObject>?, resourceURI: String?, urls: Array<URL>?, series: Array<SeriesModel>?, variants: Array<CommicsModel>?, collections: Array<CommicsModel>?, collectedIssues: Array<CommicsModel>?, dates: Array<Date>?, prices: Array<Any>?, thumbnail: MarvelImage?, images: Array<MarvelImage>?, creators: Array<CreatorsModel>?, characters: Array<CharactersModel>?, stories: Array<StoriesModel>?, events: Array<EventsModel>?) throws {
+    public init(id: Int?, digitalId: Int?, title: String?, issueNumber: Int?, variantDescription: String?, description: String?, modified: Date?, isbn: String?, diamondCode: String?, ean: String?, issn: String?, format: String?, pageCount: Int?, textObjects: Array<TextObject>?, resourceURI: String?, urls: Array<URL>?, series: Array<SeriesModel>?, variants: Array<CommicsModel>?, collections: Array<CommicsModel>?, collectedIssues: Array<CommicsModel>?, dates: Array<Date>?, prices: [Bool]?, thumbnail: MarvelImage?, images: Array<MarvelImage>?, creators: Array<CreatorsModel>?, characters: Array<CharactersModel>?, stories: Array<StoriesModel>?, events: Array<EventsModel>?) throws {
         
         self.id = id
         self.digitalId = digitalId
